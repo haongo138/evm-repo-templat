@@ -1,0 +1,41 @@
+{
+  "name": "@df/evm-dapps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/src/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts create",
+    "build": "nx build",
+    "format": "nx format",
+    "format:check": "nx format:check",
+    "lint": "nx lint",
+    "publish:lib": "pnpm run build && pnpm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "commander": "^12.1.0",
+    "figlet": "^1.7.0",
+    "picocolors": "^1.0.1",
+    "rimraf": "^5.0.7",
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "@nx/eslint": "19.2.2",
+    "@nx/eslint-plugin": "19.2.2",
+    "@nx/js": "^19.2.2",
+    "@nx/workspace": "19.2.2",
+    "@types/figlet": "^1.5.8",
+    "@types/node": "^20.14.2",
+    "nx": "19.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "type": "commonjs",
+  "packageManager": "pnpm@8.15.5",
+  "nx": {
+    "includedScripts": []
+  }
+}
