@@ -20,17 +20,20 @@ contract StreamPointsTest is Test {
     address internal USDC_ADDRESS;
 
     function setUp() public virtual {
-        ICY_ADDRESS = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
-        USDC_ADDRESS = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+        ICY_ADDRESS = address(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+        USDC_ADDRESS = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
         owner = address(0x030c5a);
         user = address(0x030c5a66341c0EDdC771F7aae79ABCA58aDE4c91);
         icySwap = new IcySwap(owner, IERC20(USDC_ADDRESS), IERC20(ICY_ADDRESS), 2 * 10**6);
+
+        // deal(ICY_ADDRESS, user, 150 * 10**18);
+        // deal(USDC_ADDRESS, address(icySwap), 150000 * 10**18);
     }
 
     function test_swap() public virtual {
+        console.log("approving");
         vm.startPrank(user);
-        deal(address(ICY_ADDRESS), user, 150 * 10**18);
-        deal(address(USDC_ADDRESS), address(icySwap), 150000 * 10**18);
+        IERC20(ICY_ADDRESS).approve(address(icySwap), 150 * 10**18);
         icySwap.swap(100 * 10**18);
         vm.stopPrank();
         assertEq(icySwap.icy().balanceOf(address(this)), 100 * 10**18, "failed to swap");

@@ -9,7 +9,7 @@ cache_path  = 'cache_forge'
 [dependencies]
 "@openzeppelin-contracts" = { version = "5.0.2", url = "https://soldeer-revisions.s3.amazonaws.com/@openzeppelin-contracts/5_0_2_14-03-2024_06:11:59_contracts.zip" }
 "@openzeppelin-contracts-upgradeable" = { version = "5.0.2", url = "https://soldeer-revisions.s3.amazonaws.com/@openzeppelin-contracts-upgradeable/5_0_2_14-03-2024_06:12:07_contracts-upgradeable.zip" }
-forge-std = { version = "1.9.1", url = "https://soldeer-revisions.s3.amazonaws.com/forge-std/v1_9_1_03-07-2024_14:44:59_forge-std-v1.9.1.zip" }
+forge-std = { version = "1.8.2", url = "https://soldeer-revisions.s3.amazonaws.com/forge-std/1_8_2_19-05-2024_18:52:07_forge-std-1.8.2.zip" }
 
 [rpc_endpoints]
 base = "https://mainnet.base.org"
