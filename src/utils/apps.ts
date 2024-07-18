@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { rimraf } from 'rimraf';
 
-export const APPS_ENGINE_DIR = `temp-build-onchain-apps`;
+export const APPS_ENGINE_DIR = `temp-df-evm-repo`;
 
 export const getAppDir = () => {
   return APPS_ENGINE_DIR + '/template';

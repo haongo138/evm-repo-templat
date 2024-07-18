@@ -54,9 +54,8 @@ export async function setupProject(projectDir: string, project) {
 
     removeDownloadedApps(APPS_ENGINE_DIR);
 
-    // Download the app from github.com/coinbase/build-onchain-apps/apps and extract it
     await execAsync(
-      'git clone https://github.com/coinbase/build-onchain-apps temp-build-onchain-apps'
+      'git clone https://github.com/coinbase/build-onchain-apps temp-df-evm-repo'
     );
 
     fs.cpSync(getAppDir(), projectDir, {
@@ -69,9 +68,7 @@ export async function setupProject(projectDir: string, project) {
 
     removeDownloadedApps(projectDir + '/contracts/lib/openzeppelin-contracts');
     removeDownloadedApps(projectDir + '/contracts/lib/forge-std');
-    removeDownloadedApps(projectDir + '/contracts/lib/ERC721A');
     removeDownloadedApps(projectDir + '/contracts/lib/solady');
-    removeDownloadedApps(projectDir + '/contracts/lib/murky');
 
     spinner.message(
       'git submodule add https://github.com/openzeppelin/openzeppelin-contracts'
@@ -134,33 +131,13 @@ export async function setupProject(projectDir: string, project) {
       projectDir + '/web/app/home'
     );
 
-    if (project.selectedModules.length === 0) {
-      chains.map(({ value }) => {
-        removeDownloadedApps(projectDir + `/web/app/${value}`);
-      });
-
-      generateNavbarExperiencesList(projectDir, []);
-    } else {
-      chains
-        .filter(({ value }) => !project.selectedModules.includes(value))
-        .map(({ value }) => {
-          removeDownloadedApps(projectDir + `/web/app/${value}`);
-        });
-
-      const selectedChains = chains.filter(({ value }) =>
-        project.selectedModules.includes(value)
-      );
-
-      generateNavbarExperiencesList(projectDir, selectedChains);
-    }
-
     await execAsync('git add .', { cwd: projectDir, stdio: 'ignore' });
-    await execAsync('git commit -m "initalized with build-onchain-apps"', {
+    await execAsync('git commit -m "initalized with @df/evm-apps"', {
       cwd: projectDir,
       stdio: 'ignore',
     });
 
-    spinner.stop(`Onchain app ${project.name} created successfully! 🚀`);
+    spinner.stop(`New app ${project.name} created successfully! 🚀`);
   } catch (e) {
     console.error(e);
     prompts.log.error(color.red('Error initializing Git and Foundry'));

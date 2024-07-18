@@ -1,0 +1,27 @@
+[profile.default]
+src = 'contracts'
+out = 'out'
+script = 'scripts'
+libs = ['node_modules', 'dependencies']
+test = 'test'
+cache_path  = 'cache_forge'
+
+[dependencies]
+"@openzeppelin-contracts" = { version = "5.0.2", url = "https://soldeer-revisions.s3.amazonaws.com/@openzeppelin-contracts/5_0_2_14-03-2024_06:11:59_contracts.zip" }
+"@openzeppelin-contracts-upgradeable" = { version = "5.0.2", url = "https://soldeer-revisions.s3.amazonaws.com/@openzeppelin-contracts-upgradeable/5_0_2_14-03-2024_06:12:07_contracts-upgradeable.zip" }
+forge-std = { version = "1.9.1", url = "https://soldeer-revisions.s3.amazonaws.com/forge-std/v1_9_1_03-07-2024_14:44:59_forge-std-v1.9.1.zip" }
+
+[rpc_endpoints]
+base = "https://mainnet.base.org"
+base_sepolia = "https://sepolia.base.org"
+base_goerli = "https://goerli.base.org"
+
+[etherscan]
+base = { key = "${BLOCK_EXPLORER_API_KEY}" }
+base_sepolia = { key = "${BLOCK_EXPLORER_API_KEY}" }
+base_goerli = { key = "${BLOCK_EXPLORER_API_KEY}" }
+
+[fmt]
+line_length = 100
+tab_width = 4
+bracket_spacing = true

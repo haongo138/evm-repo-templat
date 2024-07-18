@@ -1,0 +1,19 @@
+{
+  "name": "evm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "forge:build": "forge fmt & forge build",
+    "test": "forge test -vvv",
+    "forge:deploy": "forge script scripts/DFG.s.sol:DwavesFoundationGemScript --broadcast --verify --rpc-url base_sepolia",
+    "forge:deployImplementation": "forge script scripts/upgradeables/deployImplementation.s.sol:DeployImplementation --broadcast --verify --rpc-url base_sepolia",
+    "forge:upgradeImplementation": "forge script scripts/upgradeables/upgradeImplementation.s.sol:UpgradeImplementation --broadcast --verify --rpc-url base_sepolia"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "~5.0.4"
+  }
+}
