@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/Pausable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract IcySwap is Ownable, Pausable, ReentrancyGuard {
+contract IcySwap is Pausable, ReentrancyGuard, Ownable(msg.sender) {
     using SafeERC20 for IERC20;
 
     IERC20 public immutable usdc;
@@ -22,8 +22,7 @@ contract IcySwap is Ownable, Pausable, ReentrancyGuard {
     event ConversionRateChanged(uint256 conversionRate);
     event WithdrawToOwner(IERC20 indexed token, uint256 amount);
 
-    constructor(address initialOwner, IERC20 _usdc, IERC20 _icy, uint256 _conversionRate)
-        Ownable(initialOwner)
+    constructor(IERC20 _usdc, IERC20 _icy, uint256 _conversionRate)
     {
         usdc = _usdc;
         icy = _icy;
